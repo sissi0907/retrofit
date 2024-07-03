@@ -15,10 +15,10 @@ jobs:
           java-version: '11'
 
       - name: Compile the project
-        run: mvn test-compile -pl retrofit -am
+        run: ./gradlew test-compile -pl retrofit -am
   
       - name: Run tests
-        run: mvn -pl retrofit test -Dtest=retrofit2.CompletableFutureAndroidTest#completableFutureApi24
+        run: ./gradlew -pl retrofit test -Dtest=retrofit2.CompletableFutureAndroidTest#completableFutureApi24
   
       - name: Run NonDex to check for flaky tests
-        run: mvn -pl retrofit edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=retrofit2.CompletableFutureAndroidTest#completableFutureApi24 -DnondexRuns=10
+        run: ./gradlew -pl retrofit edu.illinois:nondex-maven-plugin:2.1.7:nondex -Dtest=retrofit2.CompletableFutureAndroidTest#completableFutureApi24 -DnondexRuns=10
