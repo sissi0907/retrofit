@@ -41,6 +41,9 @@ dependencies {
   compileOnly libs.animalSnifferAnnotations
   compileOnly libs.findBugsAnnotations
 }
+plugins {
+  id 'edu.illinois.nondexGradle' version '2.1.7'
+}
 
 javadoc {
   exclude('retrofit2/internal/**')
