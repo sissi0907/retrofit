@@ -14,11 +14,14 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
-      - name: Compile the project
-        run: ./gradlew test-compile -pl retrofit -am
+      # - name: Compile the project
+      #   run: ./gradlew test-compile -pl retrofit -am
   
-      - name: Run tests
-        run: ./gradlew -pl retrofit test -Dtest=retrofit2.CompletableFutureAndroidTest#completableFutureApi24
+      # - name: Run tests
+      #   run: ./gradlew -pl retrofit test -Dtest=retrofit2.CompletableFutureAndroidTest#completableFutureApi24
   
-      - name: Run NonDex to check for flaky tests
-        run: ./gradlew -pl retrofit edu.illinois:nondex-maven-plugin:2.1.7:nondex -Dtest=retrofit2.CompletableFutureAndroidTest#completableFutureApi24 -DnondexRuns=10
+      # - name: Run NonDex to check for flaky tests
+      #   run: ./gradlew -pl retrofit edu.illinois:nondex-maven-plugin:2.1.7:nondex -Dtest=retrofit2.CompletableFutureAndroidTest#completableFutureApi24 -DnondexRuns=10
+      - name: Run nondex on single test
+        run: |
+           ./gradlew clean test --tests "retrofit2.CompletableFutureAndroidTest#completableFutureApi24" nondex
